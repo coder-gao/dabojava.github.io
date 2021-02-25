@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>网站架构发展史 | Dabo</title>
+    <meta name="author" content="dabo" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="网站架构发展史web1.0用户打开浏览器,访问服务器的静态页面,网站里面只包含HTML,CSS,JS.这是web1.0时代常见的模式web2.02.0时代用户与服务器之间增加了一些交互,用户从浏览器输入一些数据,然后保存到数据库里面.单体架构早起传统JavaWeb开发模式,包含Model,View,Controller.以及HTML,CSS,JS.本质就是一个Serverlet或者叫做一种MVC的开发模式.这个时候是没有太多人来访问我们的网站的,只需要一台服务器,在服务器中,还包含文件服务器以及" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Dabo" type="application/atom+xml">
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">Dabo</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/tags">
+                <span class="nav-text">标签</span>
+            </a>
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="/about">
+                <span class="nav-text">关于</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-number">1.</span> <span class="toc-text">网站架构发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web1-0"><span class="toc-number">1.1.</span> <span class="toc-text">web1.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web2-0"><span class="toc-number">1.2.</span> <span class="toc-text">web2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">单体架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A6%BB%E6%9E%B6%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">分离架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">缓存机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">1.6.</span> <span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">1.7.</span> <span class="toc-text">读写分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.8.</span> <span class="toc-text">分布式数据库</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <div id="wrapper" class="wrapper" style="max-width: 800px">
+                <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            网站架构发展史
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://example.com/2021/02/25/phylogeny/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-02-25T07:28:25.000Z" itemprop="datePublished">2021-02-25</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="网站架构发展史"><a href="#网站架构发展史" class="headerlink" title="网站架构发展史"></a>网站架构发展史</h2><h3 id="web1-0"><a href="#web1-0" class="headerlink" title="web1.0"></a>web1.0</h3><img src="/images/phylogeny/image-20210225171703791.png" alt="image-20210225171703791"  />
+
+<p>用户打开浏览器,访问服务器的静态页面,网站里面只包含HTML,CSS,JS.这是web1.0时代常见的模式</p>
+<span id="more"></span>
+
+<h3 id="web2-0"><a href="#web2-0" class="headerlink" title="web2.0"></a>web2.0</h3><img src="/images/phylogeny/image-20210225171924864.png" alt="image-20210225171924864"  />
+
+<p>2.0时代用户与服务器之间增加了一些交互,用户从浏览器输入一些数据,然后保存到数据库里面.</p>
+<h3 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h3><img src="/images/phylogeny/image-20210225171224556.png" alt="image-20210225171224556" style="zoom: 67%;" />
+
+<p>早起传统JavaWeb开发模式,包含Model,View,Controller.以及HTML,CSS,JS.本质就是一个Serverlet或者叫做一种MVC的开发模式.这个时候是没有太多人来访问我们的网站的,只需要一台服务器,在服务器中,还包含文件服务器以及数据库.文件服务器会为用户提供一种文件存储的服务,比如用户头像.用户所有的数据全都保存在数据库中.</p>
+<h3 id="分离架构"><a href="#分离架构" class="headerlink" title="分离架构"></a>分离架构</h3><img src="/images/phylogeny/image-20210225172528988.png" alt="image-20210225172528988"  />
+
+<p>随着网站需求越来越大,单体架构已经不能满足我们的业务.较常见的问题就是空间不足.一旦我们的服务器宕机,那么用户久无法访问我们的网站.随后我们采用分离模式解决这种问题,分离的好处就是,给服务器降压.这样的好处就是,一旦我们的服务器宕机,我们的文件服务器和数据库还可以继续工作</p>
+<h3 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h3><img src="/images/phylogeny/image-20210225173229553.png" alt="image-20210225173229553"  />
+
+<p>随着用户量越来越大,服务器的压力成倍增加.这时我们的数据库压力会随着用户量增加延迟.这时我们采用一种缓存中间件,用户的查询不会直接访问数据库,而是先访问我们的缓存中间件,如果缓存中有数据直接返回给用户,如果没有数据才会查询数据库.</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><img src="/images/phylogeny/image-20210225211209105.png" alt="image-20210225211209105"  />
+
+<p>之前我们所采用的都是单节点部署,这样会存在一个问题.就是一旦某个节点宕机,那么用户久无法访问我们的服务.这时我们就采用集群,负载均衡这样的概念.我们会部署多个服务器,每个服务器都是同样的个体,多个就是集群.通过集群可以提升系统的性能以及负载.</p>
+<h3 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h3><img src="/images/phylogeny/image-20210225175322079.png" alt="image-20210225175322079"  />
+
+<p>之前我们虽然部署了集群,使用负载均衡算法减轻了服务器压力,但是数据库依然有大量读写操作.这时我们采用主从库,读写分离的模式,来减轻数据库压力</p>
+<h3 id="分布式数据库"><a href="#分布式数据库" class="headerlink" title="分布式数据库"></a>分布式数据库</h3><img src="/images/phylogeny/image-20210225180333883.png" alt="image-20210225180333883"  />
+
+<p>业务量继续增大,现有的数据库模式压力依然很大.这时我们采用分库分表,把同一张表的数据,按照一定的算法,散列到不同的数据库.这是我们目前对数据库拆分最后的手段.只有在数据库规模非常大的时候才考虑使用它.同时也需要考虑分布式数据库中分布式主键的问题.同时引入搜索引擎</p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?42e97bf1990894f5615987b9d49c231a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        
+<script src="/js/scrollspy.min.js"></script>
+
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
